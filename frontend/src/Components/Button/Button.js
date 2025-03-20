@@ -17,7 +17,9 @@ function Button({name, icon, onClick, bg, bPad, color, bRad}) {
 
 const ButtonStyled = styled.button`
     outline: none;
-    border: none;
+    border: 1 px solid black;
+    background-color: red;
+    color: black;
     font-family: inherit;
     font-size: inherit;
     display: flex;

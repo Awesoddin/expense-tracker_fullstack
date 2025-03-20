@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
-import { signout } from '../../utils/Icons'
+import { logout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 
-function Navigation({active, setActive}) {
+function Navigation({active, setActive, setIsAuthenticated}) {
+    const user = JSON.parse(localStorage.getItem('user'));
     
+    const handleSignOut = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setIsAuthenticated(false);
+    }
+
     return (
         <NavStyled>
             <div className="user-con">
                 <img src={avatar} alt="" />
                 <div className="text">
-                    <h2>Mike</h2>
+                    <h2>{user?.name}</h2>
                     <p>Your Money</p>
                 </div>
             </div>
@@ -28,8 +35,8 @@ function Navigation({active, setActive}) {
                 })}
             </ul>
             <div className="bottom-nav">
-                <li>
-                    {signout} Sign Out
+                <li onClick={handleSignOut}>
+                    {logout} Sign Out
                 </li>
             </div>
         </NavStyled>

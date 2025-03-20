@@ -6,14 +6,18 @@ const app = express()
 
 require('dotenv').config()
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 //middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}))
 
 //routes
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+app.use('/api/v1', require('./routes/transactions'))
+app.use('/api/v1', require('./routes/auth'))
 
 const server = () => {
     db()
