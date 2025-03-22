@@ -12,9 +12,9 @@ exports.addIncome = async (req, res) => {
         }
         
         const numAmount = Number(amount)
-        if(isNaN(numAmount) || numAmount <= 0){
-            return res.status(400).json({message: 'Amount must be a positive number!'})
-        }
+        // if(isNaN(numAmount) || numAmount <= 0){
+        //     return res.status(400).json({message: 'Amount must be a positive number!'})
+        // }
 
         const income = new IncomeSchema({
             title,

@@ -9,7 +9,7 @@ function Navigation({active, setActive, setIsAuthenticated}) {
     
     const handleSignOut = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        // localStorage.removeItem('user');
         setIsAuthenticated(false);
     }
 
